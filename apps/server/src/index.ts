@@ -1,5 +1,5 @@
 import express from "express";
-import pollsRoute from "./routes/polls.route";
+import pollsRoute from "@/routes/polls.route";
 
 const app = express();
 

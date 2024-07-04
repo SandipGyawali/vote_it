@@ -1,7 +1,7 @@
 import { drizzle } from "drizzle-orm/node-postgres";
 import { Pool } from "pg";
 import { env } from "@/lib/env";
-import * as schema from "./schema";
+import * as schema from "@/db/schema";
 
 /**
  * cache the database connection in development
