@@ -1,0 +1,15 @@
+{
+  "name": "vote_it",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "docker:compose": "docker-compose up -d",
+    "docker:stop": "docker-compose down",
+    "start-web": "cd ./apps/web && pnpm run dev",
+    "start-server": "cd ./apps/server && pnpm run start:dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
