@@ -45,6 +45,9 @@ router.post(
   async (req: Request, res: Response, next: NextFunction) => {
     try {
       const fields = rejoinPollSchema.parse(req.body);
+      console.log(
+        `Rejoining poll with ID: ${fields.pollId} for user with ID: ${fields.userId} with name: ${fields.name}`
+      );
       const controllerResponse: RejoinPollDto =
         await pollsController.rejoinPoll(fields);
 

@@ -7,7 +7,7 @@ export const ErrorHandler = (
   res: Response,
   next: NextFunction
 ) => {
-  console.log("Middleware Error Handling");
+  console.log(err);
 
   const isZodError = err instanceof ZodError;
   const errStatus = err.statusCode || 500;
