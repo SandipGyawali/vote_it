@@ -56,22 +56,23 @@ export class PollsController {
     }
   }
 
-  // /**
-  //  * @Note get poll section
-  //  */
-  // async getPoll(pollId: string): Promise<string> {
-  //   const key = `polls:${pollId}`;
+  /**
+   * @Note get poll section
+   */
+  async getPoll(fields: { pollId: string }): Promise<any> {
+    const key = `polls:${fields.pollId}`;
 
-  //   try {
-  //     const currentPoll = await redisClient.call("JSON.SET", key, ".");
+    try {
+      const currentPoll: any = await redisClient.call("JSON.GET", key, ".");
 
-  //     console.log(currentPoll);
-  //     // return JSON.parse(currentPoll);
-  //     return "hello";
-  //   } catch (err: any) {
-  //     throw new Error(err);
-  //   }
-  // }
+      if (!currentPoll)
+        throw new Error(`Poll with id: ${key} does not exist in redis`);
+
+      return JSON.parse(currentPoll);
+    } catch (err: any) {
+      throw new Error(err);
+    }
+  }
 
   /**
    * @Note jon/participate the poll.

@@ -1,11 +1,30 @@
 import { PollsController } from "@/controllers/polls.controller";
-import { NextFunction, Request, Response, Router } from "express";
-import express from "express";
-import { createPollSchema, joinPollSchema, rejoinPollSchema } from "@/schemas";
+import express, { NextFunction, Request, Response, Router } from "express";
+import {
+  createPollSchema,
+  getPollSchema,
+  joinPollSchema,
+  rejoinPollSchema,
+} from "@/schemas";
 import { CreatePollDto, JoinPollDto, RejoinPollDto } from "@/interfaces";
 
 const router: Router = express.Router(); //express route handler
 const pollsController = new PollsController(); //polls controller instance
+
+router.get(
+  "/get_poll",
+  async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const fields = getPollSchema.parse(req.body);
+
+      const controllerResponse = await pollsController.getPoll(fields);
+
+      res.status(200).json(controllerResponse);
+    } catch (err: any) {
+      next(err);
+    }
+  }
+);
 
 router.get(
   "/create",

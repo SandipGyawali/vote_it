@@ -21,3 +21,7 @@ export const rejoinPollSchema = z.object({
   email: z.string().min(1, { message: "email is required to rejoin" }),
   pollId: z.string().min(1, { message: "poll id must be mentioned" }),
 });
+
+export const getPollSchema = z.object({
+  pollId: z.string().min(1, { message: "pollId is required, cannot be empty" }),
+});
